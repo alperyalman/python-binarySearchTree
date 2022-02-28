@@ -11,3 +11,6 @@ for val in node_values:
 # Display binary search tree
 bst.display()
 
+searching_node, info = bst.find(65)
+print(info)
+

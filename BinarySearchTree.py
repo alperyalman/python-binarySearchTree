@@ -40,8 +40,28 @@ class BST:
                 currentNode.right = node
             else:
                 self.insertNode(currentNode.right, node) # If the riht node is not null, call the insert function recursively
+    
+    # Find nodes
+    def find(self, val):
+        if (self.root is None): 
+            return None, "There is no Root!"
+        else:
+            found = self.findNode(self.root, val)
+            if (not found): 
+                return None, "There is no such node in this tree!"
+            return found, "The node is found!"
+    
+    # Call findNode() function rescursively until finding the given value 
+    def findNode(self, currentNode, value):
+        if (currentNode.value == value): # The searching value is found
+            return currentNode
+        elif (value < currentNode.value and currentNode.left != None): # Continue searching on the left node
+            return self.findNode(currentNode.left, value) # Recursively call findNode() function until finding
+        elif (value > currentNode.value and currentNode.right != None): # Continue searching on the right node
+            return self.findNode(currentNode.right, value) # Recursively call findNode() function until finding
+        return None
 
-    # Reference for the followin display functions:
+    # Reference for the following display functions: 
     # https://stackoverflow.com/questions/34012886/print-binary-tree-level-by-level-in-python
     def _display_aux(self, root):
         """Returns list of strings, width, height, and horizontal coordinate of the root."""
