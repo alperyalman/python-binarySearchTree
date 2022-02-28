@@ -92,5 +92,4 @@ class BST:
         lines, *_ = self._display_aux(self.root)
         for line in lines:
             print(line)
-
     
